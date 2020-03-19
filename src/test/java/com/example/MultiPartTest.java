@@ -14,14 +14,15 @@ import java.util.Map;
 public class MultiPartTest {
 
     public static void main(String[] args) throws Exception     {
-        String body = Base64.getEncoder().encodeToString("ABC123".getBytes());
+        String body = "ABC123";
+        String bodyEncoded = Base64.getEncoder().encodeToString(body.getBytes());
         String input = "URLSTR: file:/Users/billburke/jboss/resteasy-jaxrs/resteasy-jaxrs/src/test/test-data/data.txt\r\n"
                 + "--B98hgCmKsQ-B5AUFnm2FnDRCgHPDE3\r\n"
                 + "Content-Disposition: form-data; name=\"data.txt\"; filename=\"data.txt\"\r\n"
                 + "Content-Type: application/octet-stream\r\n"
                 + "Content-Transfer-Encoding: base64\r\n"
                 + "\r\n"
-                + body + "\r\n"
+                + bodyEncoded + "\r\n"
                 + "--B98hgCmKsQ-B5AUFnm2FnDRCgHPDE3--";
         ByteArrayInputStream bais = new ByteArrayInputStream(input.getBytes());
         Map<String, String> parameters = new LinkedHashMap<>();
@@ -33,8 +34,7 @@ public class MultiPartTest {
         for (InputPart part : multipart.getParts()) {
             InputStream inputStream = ((MultipartInputImpl.PartImpl) part).getBody();
             byte[] bytes = IOUtils.toByteArray(inputStream);
-            String base64bytes = Base64.getEncoder().encodeToString(bytes);
-            System.out.println("Expected: " + body + ", but received: " + base64bytes);
+            System.out.println("Expected: " + body + ", received: " + new String(bytes));
         }
     }
 }
