@@ -1,2 +1,2 @@
-# Resteasy Empty Host Header Example
-Example resteasy project to show a bug in Resteasy when using an empty `host` header.
+# Resteasy Asynchronous IO With Netty Example
+Example resteasy project for ticket [RESTEASY-2627](https://issues.redhat.com/browse/RESTEASY-2627).

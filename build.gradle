@@ -16,11 +16,11 @@ repositories {
     mavenLocal()
 }
 
-def RESTEASY_VERSION = '3.12.0.Final'
-//def RESTEASY_VERSION = '3.12.1-SNAPSHOT'
+def RESTEASY_VERSION = '4.5.5.Final'
 
 dependencies {
     implementation group: 'org.jboss.resteasy', name: 'resteasy-netty4', version: "${RESTEASY_VERSION}"
+    implementation group: 'org.jboss.resteasy', name: 'resteasy-multipart-provider', version: "${RESTEASY_VERSION}"
 
     testImplementation group: 'junit', name: 'junit', version: '4.12'
 }
