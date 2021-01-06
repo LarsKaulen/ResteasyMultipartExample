@@ -5,6 +5,7 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataOutput;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.nio.charset.StandardCharsets;
 
 public class ServiceImpl implements Service {
 
@@ -12,7 +13,7 @@ public class ServiceImpl implements Service {
     public Response exampleApi(TestRequest request) {
         MultipartFormDataOutput multipart = new MultipartFormDataOutput();
         multipart.addFormData("content", request.getContent(), MediaType.APPLICATION_OCTET_STREAM_TYPE);
-        multipart.addFormData("more content", "test", MediaType.APPLICATION_OCTET_STREAM_TYPE);
+        multipart.addFormData("more content", "test".getBytes(StandardCharsets.UTF_8), MediaType.APPLICATION_OCTET_STREAM_TYPE);
 
         GenericEntity<MultipartFormDataOutput> entity = new GenericEntity<MultipartFormDataOutput>(multipart) {
         };
