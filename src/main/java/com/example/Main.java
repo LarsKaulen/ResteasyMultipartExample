@@ -21,6 +21,8 @@ public class Main {
         netty.setPort(8080);
         netty.setRootResourcePath("");
         netty.setSecurityDomain(null);
+
+        System.out.println("Starting server");
         netty.start();
     }
 }
