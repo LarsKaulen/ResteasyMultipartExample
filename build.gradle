@@ -17,7 +17,7 @@ repositories {
     mavenLocal()
 }
 
-def RESTEASY_VERSION = '5.0.2.Final'
+def RESTEASY_VERSION = '5.0.5.Final'
 
 dependencies {
     implementation group: 'org.jboss.resteasy', name: 'resteasy-netty4', version: "${RESTEASY_VERSION}"
